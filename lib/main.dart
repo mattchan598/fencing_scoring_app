@@ -51,6 +51,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final _formKey = GlobalKey<FormState>();
+  String weapon = "Foil";
+  List<String> weaponTypes = ["Foil", "Epee", "Sabre"];
 
   @override
   Widget build(BuildContext context) {
@@ -111,13 +113,22 @@ class _MyHomePageState extends State<MyHomePage> {
                       Padding(
                         padding:
                             EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-                        child: DropdownButtonFormField(
+                        child: DropdownButtonFormField<String>(
+                          value: weapon,
+                          onChanged: (newWeapon) {
+                            setState(() {
+                              weapon = newWeapon!;
+                            });
+                          },
                           decoration: InputDecoration(
                               border: OutlineInputBorder(), hintText: 'Weapon'),
-                          items: <DropdownMenuItem>[
-                            DropdownMenuItem(child: Text('test')),
-                            DropdownMenuItem(child: Text('test2')),
-                          ],
+                          items: weaponTypes
+                              .map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
                         ),
                       ),
                       ElevatedButton(
