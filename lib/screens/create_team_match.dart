@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../models/team_match_model.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -11,6 +12,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final _formKey = GlobalKey<FormState>();
+  TeamMatch match = new TeamMatch("Foil");
+  // match.weapon = "test";
   String weapon = "Foil";
   List<String> weaponTypes = ["Foil", "Epee", "Sabre"];
 
@@ -50,11 +53,13 @@ class _MyHomePageState extends State<MyHomePage> {
                         padding:
                             EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                         child: DropdownButtonFormField<String>(
-                          value: weapon,
+                          value: match.weapon,
                           onChanged: (newWeapon) {
+                            print(match.weapon);
                             setState(() {
-                              weapon = newWeapon!;
+                              match.weapon = newWeapon!;
                             });
+                            print(match.weapon);
                           },
                           decoration: InputDecoration(
                               border: OutlineInputBorder(), hintText: 'Weapon'),
