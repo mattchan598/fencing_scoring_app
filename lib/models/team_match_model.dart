@@ -1,10 +1,11 @@
 class TeamMatch {
-  late String name;
-  String? weapon;
-  late String teamAName;
-  late List<String> teamAMembers;
-  late String teamBName;
-  late List<String> teamBMembers;
+  String name;
+  String weapon;
+  String teamAName;
+  List<String> teamAMembers;
+  String teamBName;
+  List<String> teamBMembers;
 
-  TeamMatch(this.weapon);
+  TeamMatch(this.name, this.weapon, this.teamAName, this.teamAMembers,
+      this.teamBName, this.teamBMembers);
 }
