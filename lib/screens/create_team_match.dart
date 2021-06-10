@@ -12,9 +12,15 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final _formKey = GlobalKey<FormState>();
-  TeamMatch match = new TeamMatch("Foil");
-  // match.weapon = "test";
-  String weapon = "Foil";
+
+  final nameController = TextEditingController();
+
+  String name = '';
+  late String weapon = '';
+  late String teamAName = '';
+  late List<String> teamAMembers = [];
+  late String teamBName = '';
+  List<String> teamBMembers = [];
   List<String> weaponTypes = ["Foil", "Epee", "Sabre"];
 
   @override
@@ -53,13 +59,11 @@ class _MyHomePageState extends State<MyHomePage> {
                         padding:
                             EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                         child: DropdownButtonFormField<String>(
-                          value: match.weapon,
+                          value: weapon,
                           onChanged: (newWeapon) {
-                            print(match.weapon);
                             setState(() {
-                              match.weapon = newWeapon!;
+                              weapon = newWeapon!;
                             });
-                            print(match.weapon);
                           },
                           decoration: InputDecoration(
                               border: OutlineInputBorder(), hintText: 'Weapon'),
